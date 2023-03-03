@@ -1,0 +1,21 @@
+﻿<Window x:Class="lab2.CreateFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2"
+        mc:Ignorable="d"
+        Title="CreateFileWindow" Height="450" Width="314">
+    <Grid>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="42,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.587,0.92" FontSize="16"/>
+        <TextBox x:Name="NameOfItem" HorizontalAlignment="Left" Height="31" Margin="103,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" FontSize="18"/>
+        <RadioButton x:Name="file" Content="Directory" HorizontalAlignment="Left" Margin="140,153,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True"/>
+        <RadioButton x:Name="file_Copy" Content="File" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True"/>
+        <CheckBox x:Name="ReadOnly" Content="Read Only" Margin="103,235,103,173" FontSize="16"/>
+        <CheckBox x:Name="ReadOnly_Copy" Content="Archive" Margin="103,266,103,142" FontSize="16"/>
+        <CheckBox x:Name="ReadOnly_Copy1" Content="Hidden" Margin="103,297,103,111" FontSize="16"/>
+        <CheckBox x:Name="ReadOnly_Copy2" Content="System" Margin="103,328,103,80" FontSize="16"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="47,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18"/>
+    </Grid>
+</Window>

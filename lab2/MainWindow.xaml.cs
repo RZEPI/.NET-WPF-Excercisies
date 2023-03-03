@@ -115,13 +115,7 @@ namespace lab2
             if (treeViewItem != null)
             {
                 string tag = treeViewItem.Tag as string;
-                FileAttributes attributes = File.GetAttributes(tag);
-
-                if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
-                {
-                    attributes &= ~FileAttributes.ReadOnly;
-                    File.SetAttributes(tag, attributes);
-                }
+                RemoveFileReadOnlyAttr(tag);
                 File.Delete(treeViewItem.Tag as string);
 
                 RefreshTreeView(treeView.Items.Cast<TreeViewItem>().FirstOrDefault().Tag as string);
@@ -138,10 +132,24 @@ namespace lab2
             {
                 DirectoryInfo directory = new DirectoryInfo(treeViewItem.Tag as string);
                 foreach (var file in directory.GetFiles())
+                {
+                    RemoveFileReadOnlyAttr(file.FullName);
                     file.Delete();
+                }
                 Directory.Delete(treeViewItem.Tag as string);
 
                 RefreshTreeView(treeView.Items.Cast<TreeViewItem>().FirstOrDefault().Tag as string);
+            }
+        }
+
+        private void RemoveFileReadOnlyAttr(string path)
+        {
+            FileAttributes attributes = File.GetAttributes(path);
+
+            if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+            {
+                attributes &= ~FileAttributes.ReadOnly;
+                File.SetAttributes(path, attributes);
             }
         }
         private void RefreshTreeView(string pathToRootFolder)
