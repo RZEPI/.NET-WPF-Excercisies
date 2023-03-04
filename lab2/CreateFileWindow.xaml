@@ -9,13 +9,13 @@
     <Grid>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="42,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.587,0.92" FontSize="16"/>
         <TextBox x:Name="NameOfItem" HorizontalAlignment="Left" Height="31" Margin="103,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" FontSize="18"/>
-        <RadioButton x:Name="file" Content="Directory" HorizontalAlignment="Left" Margin="140,153,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True"/>
-        <RadioButton x:Name="file_Copy" Content="File" HorizontalAlignment="Left" Margin="41,153,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True"/>
-        <CheckBox x:Name="ReadOnly" Content="Read Only" Margin="103,235,103,173" FontSize="16"/>
-        <CheckBox x:Name="ReadOnly_Copy" Content="Archive" Margin="103,266,103,142" FontSize="16"/>
-        <CheckBox x:Name="ReadOnly_Copy1" Content="Hidden" Margin="103,297,103,111" FontSize="16"/>
-        <CheckBox x:Name="ReadOnly_Copy2" Content="System" Margin="103,328,103,80" FontSize="16"/>
-        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="47,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18"/>
+        <RadioButton x:Name="directoryRadio" Content="Directory" HorizontalAlignment="Left" Margin="167,139,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True" RenderTransformOrigin="1.232,0.497"/>
+        <RadioButton x:Name="fileRadio" Content="File" HorizontalAlignment="Left" Margin="77,139,0,0" VerticalAlignment="Top" FontSize="16" GroupName="FileOrDir" IsChecked="True"/>
+        <CheckBox x:Name="ReadOnlyChkBox" Content="Read Only" Margin="103,182,103,208" FontSize="16"/>
+        <CheckBox x:Name="ArchiveChkBox" Content="Archive" Margin="103,226,103,164" FontSize="16"/>
+        <CheckBox x:Name="HiddenChkBox" Content="Hidden" Margin="103,270,103,120" FontSize="16"/>
+        <CheckBox x:Name="SystemChkBox" Content="System" Margin="101,319,105,71" FontSize="16"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="47,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18" Click="OkButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="73" Height="29" FontSize="18" Click="Cancel_Click"/>
     </Grid>
 </Window>

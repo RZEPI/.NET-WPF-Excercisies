@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="249">
-    <Grid Margin="0,0,339,0">
-        <Menu Margin="4,0,-245,-18">
-            <MenuItem Header="File" FontSize="15" Width="50" Height="26">
+        Title="MainWindow" Height="494" Width="633">
+    <Grid Margin="0,0,0,0">
+        <Menu>
+            <MenuItem Header="File" FontSize="15" Width="50" Height="26" Margin="0,-350,0,0">
                 <MenuItem Header="Open" Click="OpenMenuItem_Click"/>
                 <MenuItem Header="Exit" Click="ExitMenuItem_Click"/>
             </MenuItem>
-            <TreeView Height="383" Width="205" x:Name="treeView" />
+            <TreeView Height="347" Margin="-40,30,0,0" Width="205" x:Name="treeView" SelectedItemChanged="treeView_Click" />
+            <ScrollViewer Height="347" Width="357" Margin="0,30,0,0">
+                <TextBlock x:Name="openedFilePreview" TextWrapping="Wrap" Margin="0,0,0,0" IsEnabled="False"/>
+            </ScrollViewer>
         </Menu>
-
+        <StatusBar Margin="0,420,-0,0">
+            <TextBlock x:Name="statusBarText" FontSize="15" Height="33" Width="100"/>
+        </StatusBar>
     </Grid>
+
 </Window>

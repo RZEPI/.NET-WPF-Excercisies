@@ -48,16 +48,15 @@ namespace lab2
         {
             System.Windows.Application.Current.Shutdown();
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void treeView_Click(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             var selectedTreeViewItem = treeView.SelectedItem as TreeViewItem;
-            var parentOfSelectedTreeViewItem = selectedTreeViewItem.Parent as TreeViewItem;
 
             if (selectedTreeViewItem != null)
             {
                 string tag = selectedTreeViewItem.Tag as string;
-
-               
+                string attributes = GetAttributes(tag);
+                statusBarText.Text = attributes;
             }
         }
 
@@ -104,7 +103,8 @@ namespace lab2
             var treeViewItem =  ((sender as MenuItem)?.Parent as ContextMenu)?.PlacementTarget as TreeViewItem;
             if(treeViewItem != null)
             {
-                System.Diagnostics.Process.Start(treeViewItem.Tag as string);
+                string fileContent = File.ReadAllText(treeViewItem.Tag as string);
+                openedFilePreview.Text = fileContent;
             }
         }
 
@@ -124,6 +124,11 @@ namespace lab2
 
         private void CreateDirectory_Click(object sender, RoutedEventArgs e)
         {
+            var treeViewItem = ((sender as MenuItem)?.Parent as ContextMenu)?.PlacementTarget as TreeViewItem;
+            var window = new CreateFileWindow(treeViewItem.Tag as string);
+            window.ShowDialog();
+            window.Close();
+            RefreshTreeView(treeView.Items.Cast<TreeViewItem>().FirstOrDefault().Tag as string);
         }
         private void DeleteDirectory_Click(object sender, RoutedEventArgs e)
         {
@@ -159,6 +164,33 @@ namespace lab2
             var rootNode = new TreeViewItem { Header = rootFolder.Name, Tag = rootFolder.FullName };
             LoadFolders(rootNode, rootFolder);
             treeView.Items.Add(rootNode);
+        }
+
+        private string GetAttributes(string path)
+        {
+            string attributes = "";
+            FileInfo file = new FileInfo(path);
+            if ((file.Attributes & FileAttributes.ReadOnly) != 0)
+                attributes += 'r';
+            else
+                attributes += '-';
+
+            if ((file.Attributes & FileAttributes.Archive) != 0)
+                attributes += 'a';
+            else
+                attributes += '-';
+
+            if ((file.Attributes & FileAttributes.System) != 0)
+                attributes += 's';
+            else
+                attributes += '-';
+
+            if ((file.Attributes & FileAttributes.Hidden) != 0)
+                attributes += 'h';
+            else
+                attributes += '-';
+
+            return attributes;
         }
     }
 }
